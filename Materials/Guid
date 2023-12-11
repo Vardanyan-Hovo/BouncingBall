@@ -1,0 +1,10 @@
+npx create-snowpack-app . --template @snowpack/app-template-blank-typescript --force
+
+2)delete in package.json
+    "test": "echo \"This template does not include a test runner by default.\" && exit 1",
+    "format": "prettier --write \"src/**/*.{ts,js}\"",
+    "lint": "prettier --check \"src/**/*.{ts,js}\""
+3)delete .prettierrc file
+
+
+4)https://www.w3schools.com/graphics/canvas_coordinates.asp

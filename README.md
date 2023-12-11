@@ -4,21 +4,22 @@
 
 ## Available Scripts
 
-### npm start
+### 
+<h1></h1>
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+<h2>for run app </h2>
+<p>npm install</p>
+<p>npm start</p>
 
-### npm run build
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+<h2>for create new app </h2>
+<p>i use this source</p>
+<p>https://www.youtube.com/watch?v=jBmrduvKl5w</p>
+<p>npx create-snowpack-app . --template @snowpack/app-template-blank-typescript --force</p>
+<p>open and learn</p>
+<p>https://www.w3schools.com/graphics/canvas_coordinates.asp</p>
+<p>https://www.tutorialspoint.com/typescript/typescript_arrays.htm<p>
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.mjs` config file.
-
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+<h5>Mmdn web docs</h5>
+<p>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</p>
