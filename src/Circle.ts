@@ -37,5 +37,3 @@ export default class Circle {
     }
     
   }
-
-  let x:number = 5;

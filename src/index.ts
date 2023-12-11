@@ -1,3 +1,9 @@
+// import confetti from 'canvas-confetti';
+
+// confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
+//   resize: true,
+//   useWorker: true,
+// })({ particleCount: 200, spread: 200 });
 import Circle from "./Circle"
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -41,4 +47,3 @@ function tick(currentTime: number) {
 
 // Start the game loop
 requestAnimationFrame(tick);
-
