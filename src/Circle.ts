@@ -13,13 +13,16 @@ export default class Circle {
     gravity:number = 9.8;                                         // Earth-like gravity  F = mg    m/vˆ2
     dampeningFactor:number = 0.8;                                 // Dampening effect on bounce
     startTimeToDelete:number = 0;
+    colors = ['red','green','blue','yellow','orange','purple','cyan',
+      'magenta','pink','teal','lime','skyblue','violet','salmon','navy'
+    ];
 
 
 
     public draw() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);// with radian PI
-        this.ctx.fillStyle = 'blue';                              // Circle color
+        this.ctx.fillStyle = this.colors[parseInt(this.number)];                              // Circle color
         this.ctx.fill();
         this.ctx.closePath();
 
@@ -32,7 +35,7 @@ export default class Circle {
         this.ctx.textBaseline = 'middle';
 
         // Write number at the center of the circle
-        this.ctx.fillText(this.number + "", this.x, this.y); // Replace '42' with your desired number
+        this.ctx.fillText(this.number, this.x, this.y); // Replace '42' with your desired number
     }
 
     //no more than 15 circles on the screen

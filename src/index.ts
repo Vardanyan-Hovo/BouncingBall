@@ -44,6 +44,7 @@ function tick(currentTime: number) {
     const deltaTime = currentTime - lastTime;          //delta time
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    
     Circle.quantityCheckCircle(circles);              //if 15 > number
     Circle.ifTwoSecondsAboveTheFloor(circles);        //on the floor 2 seconds to be
 
