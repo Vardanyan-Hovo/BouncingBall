@@ -5,42 +5,80 @@ export default class Circle {
         public y: number,
         public radius: number,
         public speed: number = 0,
-        private ctx: CanvasRenderingContext2D // Accept ctx as a parameter
+        private ctx: CanvasRenderingContext2D                     // Accept ctx as a parameter
         ) {}
 
     //properties
-    gravity:number = 9.8; // Earth-like gravity  F = mg m/vˆ2
-    dampeningFactor = 0.8; // Dampening effect on bounce
+    gravity:number = 9.8;                                         // Earth-like gravity  F = mg    m/vˆ2
+    dampeningFactor:number = 0.8;                                        // Dampening effect on bounce
+    startTimeToDelete:number = 0;
 
 
 
     public draw() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);// with radian PI
-        this.ctx.fillStyle = 'blue'; // Circle color
+        this.ctx.fillStyle = 'blue';                              // Circle color
         this.ctx.fill();
         this.ctx.closePath();
     }
 
-    static  quantityCheckCircle(circle:Circle[])
+    //no more than 15 circles on the screen
+    static  quantityCheckCircle(circles:Circle[])
     {
-      if (circle.length > 15)
+      if (circles.length > 15)
       {
-        circle.shift();
+        circles.shift();
       }
     }
+
+
+    //when the circle on the floor waits 2 seconds to be removed
+    static  ifTwoSecondsAboveTheFloor(circles:Circle[])
+    {
+      let x = circles;                      //copy for iterate
+
+      x.forEach((circle)=>{
+        if (circle.waitForTwoSecond())
+          circles.splice(circles.findIndex((c)=>circle));
+      })
+    }
+
+    //wait For Two Millisecond for delete
+    public waitForTwoSecond():Boolean
+    {
+      if (!this.startTimeToDelete && 
+        this.speed < 0 && this.speed > -0.1 &&
+          (this.y + this.radius >= this.ctx.canvas.height))
+      {
+        this.startTimeToDelete = new Date().getSeconds();
+      }
+      if (this.startTimeToDelete)
+      {
+        let currentTime:number = new Date().getSeconds();
+
+        console.log("currentTime = " + currentTime);
+        console.log("this.startTimeToDelete = " + this.startTimeToDelete);
+        if ((currentTime - this.startTimeToDelete) > 2)
+        {
+          return true
+        }
+      }
+      return false;
+    }
+  
     // Method to update circle position and velocity
     public update(canvas: HTMLCanvasElement, deltaTime : number) {
-      
+   
       //for drop down
-      this.speed += this.gravity * (deltaTime / 1000);  //for acceleration
+      this.speed += this.gravity * (deltaTime / 1000);              //for acceleration //physics this.speed === v
       this.y += this.speed;
 
       // Bounce upon hitting the bottom of the canvas
       if (this.y + this.radius > canvas.height)
       {
         this.y = canvas.height - this.radius;
-        this.speed *= -this.dampeningFactor;          // Apply dampening effect
+        this.speed *= -this.dampeningFactor;                        // Apply dampening effect
       }
 
   
