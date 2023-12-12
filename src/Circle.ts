@@ -5,7 +5,6 @@ export default class Circle {
         public y: number,
         public radius: number,
         public speed: number = 0,
-        public deltaTime:number,
         private ctx: CanvasRenderingContext2D // Accept ctx as a parameter
         ) {}
 
@@ -23,17 +22,18 @@ export default class Circle {
         this.ctx.closePath();
     }
 
-    static  quantityCheckCircle(circle:Circle[]){
-      if (circle.length > 15 )
+    static  quantityCheckCircle(circle:Circle[])
+    {
+      if (circle.length > 15)
       {
         circle.shift();
       }
     }
     // Method to update circle position and velocity
-    public update(canvas: HTMLCanvasElement) {
+    public update(canvas: HTMLCanvasElement, deltaTime : number) {
       
       //for drop down
-      this.speed += this.gravity * (this.deltaTime / 1000);  //for acceleration
+      this.speed += this.gravity * (deltaTime / 1000);  //for acceleration
       this.y += this.speed;
 
       // Bounce upon hitting the bottom of the canvas
