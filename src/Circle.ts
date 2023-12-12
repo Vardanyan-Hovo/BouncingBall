@@ -5,23 +5,23 @@ export default class Circle {
         public y: number,
         public radius: number,
         public speed: number = 0,
+        public number:string,
         private ctx: CanvasRenderingContext2D                     // Accept ctx as a parameter
         ) {}
 
     //properties
     gravity:number = 9.8;                                         // Earth-like gravity  F = mg    m/vˆ2
-    dampeningFactor:number = 0.8;                                        // Dampening effect on bounce
+    dampeningFactor:number = 0.8;                                 // Dampening effect on bounce
     startTimeToDelete:number = 0;
 
 
 
-    public draw(i : number) {
+    public draw() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);// with radian PI
         this.ctx.fillStyle = 'blue';                              // Circle color
         this.ctx.fill();
         this.ctx.closePath();
-
 
          // Set text properties
         this.ctx.fillStyle = 'white'; // Color of the text inside the circle
@@ -31,9 +31,8 @@ export default class Circle {
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
 
-        console.log(i + "----------------------------");
         // Write number at the center of the circle
-        this.ctx.fillText(i + "", this.x, this.y); // Replace '42' with your desired number
+        this.ctx.fillText(this.number + "", this.x, this.y); // Replace '42' with your desired number
     }
 
     //no more than 15 circles on the screen
@@ -61,7 +60,7 @@ export default class Circle {
     public  waitForTwoSecond()
     {
       if (!this.startTimeToDelete && 
-        this.speed < 0 && this.speed > -0.1 &&
+        this.speed < 0 && this.speed > -0.2 &&
           (this.y + this.radius >= this.ctx.canvas.height))     //check circle on the floor
       {
         this.startTimeToDelete = new Date().getSeconds();
@@ -78,9 +77,9 @@ export default class Circle {
       return false;
     }
   
-    
+
     // Method to update circle position and velocity
-    public update(canvas: HTMLCanvasElement, deltaTime : number, i:number) {
+    public update(canvas: HTMLCanvasElement, deltaTime : number) {
    
       //for drop down
       this.speed += this.gravity * (deltaTime / 1000);              //for acceleration //physics this.speed === v
@@ -92,7 +91,7 @@ export default class Circle {
         this.y = canvas.height - this.radius;
         this.speed *= -this.dampeningFactor;                        // Apply dampening effect
       }
-      this.draw(i);
+      this.draw();
     }
     
   }

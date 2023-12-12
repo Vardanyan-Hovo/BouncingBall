@@ -9,9 +9,23 @@ const circles: Circle[] = [];
 let lastTime:number = 0;
 
 
+// function for get number element
+function getNumber(circles:Circle[]):string
+{
+    let i:number = 0;
+    while(circles.length > i)
+    {
+        if (!circles.find((circl)=>circl.number === i.toString()))
+            return (i+"")
+        ++i;
+    }
+    return (i+"")
+}
+
 // Function to create new circle instances
 function createCircle(x: number, y: number) {
-    const newCircle = new Circle(x, y, 10, 0, ctx);
+    let numberNewCircle = getNumber(circles);
+    const newCircle = new Circle(x, y, 10, 0, numberNewCircle,  ctx);
     circles.push(newCircle);
 }
 
@@ -35,7 +49,7 @@ function tick(currentTime: number) {
 
     // Update and render each circle
     for (let i = 0; i < circles.length; i++) {
-        circles[i].update(canvas, deltaTime, i);
+        circles[i].update(canvas, deltaTime);
     }
 
 
