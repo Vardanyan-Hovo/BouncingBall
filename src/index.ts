@@ -35,7 +35,7 @@ function tick(currentTime: number) {
 
     // Update and render each circle
     for (let i = 0; i < circles.length; i++) {
-        circles[i].update(canvas, deltaTime);
+        circles[i].update(canvas, deltaTime, i);
     }
 
 

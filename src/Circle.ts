@@ -15,12 +15,25 @@ export default class Circle {
 
 
 
-    public draw() {
+    public draw(i : number) {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);// with radian PI
         this.ctx.fillStyle = 'blue';                              // Circle color
         this.ctx.fill();
         this.ctx.closePath();
+
+
+         // Set text properties
+        this.ctx.fillStyle = 'white'; // Color of the text inside the circle
+        this.ctx.font = `${this.radius}px Arial`; // Font size and type
+
+        // Center the text horizontally and vertically in the circle
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+
+        console.log(i + "----------------------------");
+        // Write number at the center of the circle
+        this.ctx.fillText(i + "", this.x, this.y); // Replace '42' with your desired number
     }
 
     //no more than 15 circles on the screen
@@ -38,18 +51,18 @@ export default class Circle {
     {
       let x = circles;                      //copy for iterate
 
-      x.forEach((circle)=>{
-        if (circle.waitForTwoSecond())
-          circles.splice(circles.findIndex((c)=>circle));
-      })
+      circles.forEach((circle, index)=>{
+          if (circle.waitForTwoSecond())
+            circles.splice(circles.findIndex((c)=>circle),1);
+        })
     }
 
     //wait For Two Millisecond for delete
-    public waitForTwoSecond():Boolean
+    public  waitForTwoSecond()
     {
       if (!this.startTimeToDelete && 
         this.speed < 0 && this.speed > -0.1 &&
-          (this.y + this.radius >= this.ctx.canvas.height))
+          (this.y + this.radius >= this.ctx.canvas.height))     //check circle on the floor
       {
         this.startTimeToDelete = new Date().getSeconds();
       }
@@ -57,9 +70,7 @@ export default class Circle {
       {
         let currentTime:number = new Date().getSeconds();
 
-        console.log("currentTime = " + currentTime);
-        console.log("this.startTimeToDelete = " + this.startTimeToDelete);
-        if ((currentTime - this.startTimeToDelete) > 2)
+        if ((currentTime - this.startTimeToDelete) > 2)         //need to delete
         {
           return true
         }
@@ -67,8 +78,9 @@ export default class Circle {
       return false;
     }
   
+    
     // Method to update circle position and velocity
-    public update(canvas: HTMLCanvasElement, deltaTime : number) {
+    public update(canvas: HTMLCanvasElement, deltaTime : number, i:number) {
    
       //for drop down
       this.speed += this.gravity * (deltaTime / 1000);              //for acceleration //physics this.speed === v
@@ -80,9 +92,7 @@ export default class Circle {
         this.y = canvas.height - this.radius;
         this.speed *= -this.dampeningFactor;                        // Apply dampening effect
       }
-
-  
-      this.draw();
+      this.draw(i);
     }
     
   }
