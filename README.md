@@ -15,12 +15,13 @@
 <d/>
 <h2>for create new app </h2>
 <div>
-    <p><span style="color:blue;">for avoid dis error i use <q>Snowpack</q></span></p>
-    <p><span style="color:red;">Uncaught ReferenceError: exports is not defined at <b>index.js</b></span></p>
+    <div><img src"./public/error.png" alt="Game" width="50" height="50">for avoid dis error i use <q>Snowpack</q></p></div>
+    <p>Uncaught ReferenceError: exports is not defined at <b>index.js</b></p>
 </div>
 
 <h4>i use this source</h4>
 <div>
+    <h5>How To Build Your First TypeScript Project </h5>
     <p>https://www.youtube.com/watch?v=jBmrduvKl5w</p>
     <p>npx create-snowpack-app . --template @snowpack/app-template-blank-typescript --force</p>
     <p>open and learn</p>
