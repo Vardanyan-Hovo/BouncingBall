@@ -15,8 +15,8 @@
 <d/>
 <h2>for create new app </h2>
 <div>
-    <p color="red">for avoid dis error i use <q>Snowpack</q></p>
-    <p color="red">Uncaught ReferenceError: exports is not defined at <b>index.js</b></p>
+    <p style="color:blue;">for avoid dis error i use <q>Snowpack</q></p>
+    <p style="color:red;">Uncaught ReferenceError: exports is not defined at <b>index.js</b></p>
 </div>
 
 <h4>i use this source</h4>
