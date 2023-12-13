@@ -15,7 +15,7 @@
 <d/>
 <h2>for create new app </h2>
 <div>
-    <div><img src"./public/error.png" alt="Game" width="50" height="50">for avoid dis error i use <q>Snowpack</q></p></div>
+    <div><img src="./public/error.png" alt="Game" width="50" height="50">for avoid dis error i use <q>Snowpack</q></p></div>
     <p>Uncaught ReferenceError: exports is not defined at <b>index.js</b></p>
 </div>
 
@@ -27,7 +27,6 @@
     <p>open and learn</p>
     <p>https://www.w3schools.com/graphics/canvas_coordinates.asp</p>
     <p>https://www.tutorialspoint.com/typescript/typescript_arrays.htm<p>
-
-    <h5>Mmdn web docs</h5>
+    <p>Mmdn web docs</p>
     <p>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</p>
 </div>
