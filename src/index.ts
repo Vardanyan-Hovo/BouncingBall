@@ -1,4 +1,4 @@
-import Circle from "./circle"
+import Circle from "./Circle"
 
 const radius: number = 10
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
