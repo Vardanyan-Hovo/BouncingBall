@@ -7,7 +7,8 @@ export default class Circle {
         public speed: number = 0,
         public number:string,
         private ctx: CanvasRenderingContext2D                     // Accept ctx as a parameter
-        ) {}
+        ) {
+        }
 
     //properties
     gravity:number = 9.8;                                         // Earth-like gravity  F = mg    m/vˆ2
@@ -38,28 +39,29 @@ export default class Circle {
         this.ctx.fillText(this.number, this.x, this.y); // Replace '42' with your desired number
     }
 
+
+//---------------------------------------------------------- section  delete for array
     //no more than 15 circles on the screen
     static  quantityCheckCircle(circles:Circle[])
     {
-      if (circles.length > 15)
+      // console.log(circles.length);
+      if (circles.length >= 15)
       {
         circles.shift();
       }
     }
 
 
-    //when the circle on the floor waits 2 seconds to be removed
+    //delete on array
     static  ifTwoSecondsAboveTheFloor(circles:Circle[])
     {
-      let x = circles;                      //copy for iterate
-
       circles.forEach((circle, index)=>{
           if (circle.waitForTwoSecond())
             circles.splice(circles.findIndex((c)=>circle),1);
         })
     }
 
-    //wait For Two Millisecond for delete
+    //when the circle on the floor waits 2 seconds to be removed
     public  waitForTwoSecond()
     {
       if (!this.startTimeToDelete && 
@@ -79,8 +81,11 @@ export default class Circle {
       }
       return false;
     }
-  
 
+
+
+
+//-----------------------------------------------------------       section for update
     // Method to update circle position and velocity
     public update(canvas: HTMLCanvasElement, deltaTime : number) {
    
@@ -94,19 +99,14 @@ export default class Circle {
         this.y = canvas.height - this.radius;
         this.speed *= -this.dampeningFactor;                        // Apply dampening effect
       }
+      if (this.y - this.radius < 0)
+        this.y = this.radius;
+      if (this.x + this.radius >= canvas.width)
+        this.x = canvas.width - this.radius;
+      if (this.x - this.radius < 0)
+        this.x = this.radius;
+      console.log("X = " + this.x + "   Y = " + this.y);
       this.draw();
     }
     
   }
-
-//import confetti from 'canvas-confetti';
-// confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-// resize: true,
-// useWorker: true,
-// })({ particleCount: 200, spread: 200 });
-
-
-//   confetti.create(ctx.canvas, {
-//     resize: true,
-//     useWorker: true,
-//   })({ particleCount: 200, spread: 50 });

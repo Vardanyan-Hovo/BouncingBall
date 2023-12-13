@@ -1,15 +1,14 @@
 import Circle from "./circle"
 
+const radius: number = 10
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-
 
 // Array to store circle instances
 const circles: Circle[] = [];
 let lastTime:number = 0;
 
-
-// function for get number element
+//function for get a unique number in the range from 0 to 15
 function getNumber(circles:Circle[]):string
 {
     let i:number = 0;
@@ -23,9 +22,10 @@ function getNumber(circles:Circle[]):string
 }
 
 // Function to create new circle instances
-function createCircle(x: number, y: number) {
-    let numberNewCircle = getNumber(circles);
-    const newCircle = new Circle(x, y, 10, 0, numberNewCircle,  ctx);
+function createCircle(x: number, y: number)
+{
+    let numberNewCircle = getNumber(circles);           //get number element
+    const newCircle = new Circle(x, y, radius, 0, numberNewCircle,  ctx);
     circles.push(newCircle);
 }
 

@@ -10,7 +10,7 @@
 
 <h2>for run app </h2>
 <p>npm install</p>
-<p>npm start</p>
+<p>npm run start</p>
 
 
 <h2>for create new app </h2>
