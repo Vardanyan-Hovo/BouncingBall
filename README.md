@@ -15,7 +15,7 @@
 <d/>
 <h2>for create new app </h2>
 <div>
-    <div><img src="./public/error.png" alt="Game" width="50" height="50">for avoid dis error i use <q>Snowpack</q></p></div>
+    <div><img src="./public/error.png" alt="Game" width="25" height="25">for avoid dis error i use <q>Snowpack</q></p></div>
     <p>Uncaught ReferenceError: exports is not defined at <b>index.js</b></p>
 </div>
 
