@@ -1,8 +1,16 @@
-import Circle from "./Circle"
+import Circle from "./circle"
 
 const radius: number = 10
-const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+let canvas= document.getElementById('canvas') as HTMLCanvasElement;
+let ctx  = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const canv = document.getElementById('canvas') as HTMLCanvasElement;
+    const ct = canvas.getContext('2d') as CanvasRenderingContext2D;
+    canvas = canv;
+    ctx = ct;
+});
+
 
 // Array to store circle instances
 const circles: Circle[] = [];
@@ -44,7 +52,8 @@ function tick(currentTime: number) {
     const deltaTime = currentTime - lastTime;          //delta time
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-    
+    ctx.fillText("Click me", canvas.width / 2, canvas.height / 2);
+    ctx.fillStyle = "red";
     Circle.quantityCheckCircle(circles);              //if 15 > number
     Circle.ifTwoSecondsAboveTheFloor(circles);        //on the floor 2 seconds to be
 
