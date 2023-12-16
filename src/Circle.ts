@@ -1,5 +1,6 @@
 // Circle class to represent each circle object
 export default class Circle {
+  
   constructor(
       public x: number,
       public y: number,
